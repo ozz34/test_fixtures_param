@@ -9,13 +9,12 @@ import json
 def browser():
     print("\nstart browser for test..")
     browser = webdriver.Chrome()
-    browser.implicitly_wait(5)
+    browser.implicitly_wait(10)
     yield browser
-    print("\nquit browser..")
+    print("\nfinish browser for test..")
     browser.quit()
 
-
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def load_config():
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
